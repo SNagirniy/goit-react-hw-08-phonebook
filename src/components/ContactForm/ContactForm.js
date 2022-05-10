@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { contactsSelectors, contactOperations } from 'Redux/Contacts';
+import { ContactsSelectors, addContacts } from 'Redux/Contacts';
 
 import s from './ContactForm.module.css';
 
@@ -8,8 +8,8 @@ export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const allContacts = useSelector(contactsSelectors.getAllContacts);
-  const checkedContact = contactsSelectors.checkContact;
+  const allContacts = useSelector(ContactsSelectors.getItems);
+  const checkedContact = ContactsSelectors.checkContact;
   const dispatch = useDispatch();
 
   const resetForm = () => {
@@ -40,7 +40,7 @@ export default function ContactForm() {
       return;
     }
 
-    dispatch(contactOperations.addContact({ name, number }));
+    dispatch(addContacts({ name, number }));
     resetForm();
   };
 

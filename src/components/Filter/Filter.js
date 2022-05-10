@@ -1,13 +1,13 @@
 import React from 'react';
 import s from './Filter.module.css';
-import { contactsSelectors } from 'Redux/Contacts';
+import { ContactsSelectors } from 'Redux/Contacts';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { updateFilter } from 'Redux/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const value = useSelector(contactsSelectors.getFilter);
+  const value = useSelector(ContactsSelectors.getFilter);
   return (
     <label className={s.filter_label}>
       Find contacts by name

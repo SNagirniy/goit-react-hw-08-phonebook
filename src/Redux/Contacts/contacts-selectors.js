@@ -1,32 +1,19 @@
-import { createSelector } from '@reduxjs/toolkit';
+export const getItems = state => state.contacts;
+export const getFilter = state => state.filter.filter;
 
-const getLoading = state => state.contacts.loading;
+export const getVisibleContacts = state => {
+  const items = getItems(state);
+  const filter = getFilter(state);
+  const normalizedFilter = filter.toLowerCase();
+  return items.filter(({ name }) =>
+    name.toLowerCase().includes(normalizedFilter)
+  );
+};
 
-const getFilter = state => state.filter.filter;
-
-const getAllContacts = state => state.contacts.items;
-
-const getVisibleContacts = createSelector(
-  [getAllContacts, getFilter],
-  (contacts, filter) => {
-    const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  }
-);
-
-const checkContact = (contacts, name) => {
+export const checkContact = (contacts, name) => {
   return contacts.find(
     contact => contact.name.toLowerCase() === name.toLowerCase()
   );
 };
 
-const contactsSelectors = {
-  getAllContacts,
-  getLoading,
-  getFilter,
-  checkContact,
-  getVisibleContacts,
-};
-export default contactsSelectors;
+

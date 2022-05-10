@@ -6,10 +6,12 @@ import { authSelectors } from './Redux/auth/auth-selectors';
 import operations from 'Redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
 
-import PhonebookView from 'Views/PhonebookView';
-import AppBar from 'components/appBar/AppBar';
-import RegisterView from 'Views/RegisterView';
-import LoginView from 'Views/LoginView';
+import { Layout } from 'components/Layout/Layout';
+
+const HomePage = lazy(() => import('Views/HomePage'));
+const RegisterView = lazy(() => import('Views/RegisterView'));
+const LoginView = lazy(() => import('Views/LoginView'));
+const PhonebookView = lazy(() => import('Views/PhonebookView'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -21,35 +23,48 @@ export default function App() {
 
   return (
     <>
-      <AppBar />
-      <Suspense fallback={<p>Загружаем...</p>}>
-        <Routes>
-          <Route
-            path="contacts"
-            element={
-              <PrivateRoute>
-                <PhonebookView />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRoute>
-                <LoginView />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="register"
-            element={
-              <PublicRoute>
-                <RegisterView />
-              </PublicRoute>
-            }
-          />
-        </Routes>
-      </Suspense>
+      {!isFetchingCurrentUser && (
+        <Suspense fallback={<p>Загружаем...</p>}>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route
+                path="/"
+                element={
+                  <PublicRoute>
+                    <HomePage />
+                  </PublicRoute>
+                }
+              />
+
+              <Route
+                path="contacts"
+                element={
+                  <PrivateRoute>
+                    <PhonebookView />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="login"
+                element={
+                  <PublicRoute>
+                    <LoginView />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="register"
+                element={
+                  <PublicRoute>
+                    <RegisterView />
+                  </PublicRoute>
+                }
+              />
+            </Route>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Suspense>
+      )}
     </>
   );
 }

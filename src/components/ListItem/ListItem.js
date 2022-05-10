@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import s from './ListItem.module.css';
 import { useDispatch } from 'react-redux';
-import { contactOperations } from 'Redux/Contacts';
+import { deleteContacts } from 'Redux/Contacts';
 
 const ListItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const ListItem = ({ name, number, id }) => {
       {name}: {number}
       <button
         className={s.delete_button}
-        onClick={() => dispatch(contactOperations.deleteContact(id))}
+        onClick={() => dispatch(deleteContacts(id))}
       >
         Delete
       </button>

@@ -5,14 +5,13 @@ import Section from 'components/Section';
 import ContactForm from 'components/ContactForm';
 import Contactlist from 'components/Contactlist';
 import Filter from 'components/Filter';
-import { contactOperations, contactsSelectors } from 'Redux/Contacts';
+import { fetchContacts } from 'Redux/Contacts';
 
-export default function PhonebookView(params) {
+export default function PhonebookView() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(contactsSelectors.getLoading);
-
-  useEffect(() => dispatch(contactOperations.fetchContacts), [dispatch]);
-
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
   return (
     <Container>
       <Section title={'Phonebook'}>
