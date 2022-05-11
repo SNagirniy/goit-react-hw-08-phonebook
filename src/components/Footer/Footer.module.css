@@ -1,0 +1,29 @@
+
+.footer {
+  padding: 20px 0;
+  position: relative;
+  
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: grey;
+}
+
+.link {
+  text-decoration: none;
+  color: grey;
+}
+
+.link:hover,
+.link:focus {
+    color: rgb(56, 118, 194);
+
+  }
+
+.name {
+  margin-left: 5px;
+}

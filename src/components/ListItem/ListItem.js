@@ -4,6 +4,9 @@ import s from './ListItem.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteContacts } from 'Redux/Contacts';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ListItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
   return (
@@ -11,7 +14,10 @@ const ListItem = ({ name, number, id }) => {
       {name}: {number}
       <button
         className={s.delete_button}
-        onClick={() => dispatch(deleteContacts(id))}
+        onClick={() => {
+          dispatch(deleteContacts(id));
+          toast.error('Contact deleted');
+        }}
       >
         Delete
       </button>

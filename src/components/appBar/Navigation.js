@@ -2,38 +2,19 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { authSelectors } from '../../Redux/auth/auth-selectors';
-
-const styles = {
-  link: {
-    display: 'inline-block',
-    textDecoration: 'none',
-    padding: 12,
-    fontWeight: 700,
-    color: '#2A363B',
-  },
-  activeLink: {
-    color: '#E84A5F',
-  },
-};
+import { StyledLink } from 'components/helpers';
 
 const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <nav>
-      <NavLink to="/" style={styles.link} activeStyle={styles.activeLink}>
-        Главная
-      </NavLink>
-
+      <StyledLink underline="hover" variant="h6" to="/" component={NavLink}>
+        Home
+      </StyledLink>
       {isLoggedIn && (
-        <>
-          <NavLink
-            to="/contacts"
-            style={styles.link}
-            activeStyle={styles.activeLink}
-          >
-            Contacts
-          </NavLink>
-        </>
+        <StyledLink variant="h6" to="/contacts" component={NavLink}>
+          Contacts
+        </StyledLink>
       )}
     </nav>
   );

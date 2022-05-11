@@ -3,22 +3,23 @@ import Navigation from './Navigation';
 import UserMenu from 'components/userMenu/userMenu';
 import AuthNav from './authNav';
 import { authSelectors } from '../../Redux/auth/auth-selectors';
+import { AppBar, Container, Toolbar, styled } from '@mui/material';
 
-const styles = {
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderBottom: '1px solid #2A363B',
-  },
-};
+const StyledToolBar = styled(Toolbar)({
+  dispaly: 'flex',
+  justifyContent: 'space-between',
+});
 
-export default function AppBar() {
+export default function NavBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <header style={styles.header}>
-      <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    </header>
+    <AppBar position="static">
+      <Container>
+        <StyledToolBar>
+          <Navigation />
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        </StyledToolBar>
+      </Container>
+    </AppBar>
   );
 }

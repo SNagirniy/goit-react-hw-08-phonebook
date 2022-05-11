@@ -7,6 +7,7 @@ import operations from 'Redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Layout } from 'components/Layout/Layout';
+import Footer from 'components/Footer/Fotter';
 
 const HomePage = lazy(() => import('Views/HomePage'));
 const RegisterView = lazy(() => import('Views/RegisterView'));
@@ -27,14 +28,7 @@ export default function App() {
         <Suspense fallback={<p>Загружаем...</p>}>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route
-                path="/"
-                element={
-                  <PublicRoute>
-                    <HomePage />
-                  </PublicRoute>
-                }
-              />
+              <Route path="/" element={<HomePage />} />
 
               <Route
                 path="contacts"
@@ -65,6 +59,7 @@ export default function App() {
           </Routes>
         </Suspense>
       )}
+      <Footer />
     </>
   );
 }

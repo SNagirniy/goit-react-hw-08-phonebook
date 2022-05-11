@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ContactsSelectors, addContacts } from 'Redux/Contacts';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -36,11 +39,13 @@ export default function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
     if (checkedContact(allContacts, name)) {
+      toast.error(`${name} is already in contacts.`);
       resetForm();
       return;
     }
 
     dispatch(addContacts({ name, number }));
+    toast.success('New contact created');
     resetForm();
   };
 

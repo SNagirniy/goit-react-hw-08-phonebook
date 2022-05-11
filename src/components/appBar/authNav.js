@@ -1,32 +1,29 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Link, styled, Container } from '@mui/material';
 
-const styles = {
-  link: {
-    display: 'inline-block',
-    textDecoration: 'none',
-    padding: 12,
-    fontWeight: 700,
-    color: '#2A363B',
-  },
-  activeLink: {
-    color: '#E84A5F',
-  },
-};
+
+const StyledLink = styled(Link)({
+  textAlign: 'none',
+  color: 'inherit',
+  padding: '5px',
+  marginRight: '10px',
+});
+
+const StyledContainer = styled(Container)({
+  display: 'flex',
+  justifyContent: 'flex-end',
+});
 
 export default function AuthNav() {
   return (
-    <div>
-      <NavLink
-        to="/register"
-        style={styles.link}
-        activeStyle={styles.activeLink}
-      >
-        Регистрация
-      </NavLink>
-      <NavLink to="/login" style={styles.link} activeStyle={styles.activeLink}>
-        Логин
-      </NavLink>
-    </div>
+    <StyledContainer>
+      <StyledLink variant="h6" to="/register" component={NavLink}>
+        Register
+      </StyledLink>
+      <StyledLink variant="h6" to="/login" component={NavLink}>
+        Login
+      </StyledLink>
+    </StyledContainer>
   );
 }

@@ -14,20 +14,21 @@
   font-weight: 700;
   color: rgb(49, 48, 48);
   text-shadow: 0 0 1px #fff, -1px -1px 0 hsl(80, 7%, 51%),
-    -1px -1px 1px hsl(80, 1%, 59%), -1px -1px 1px hsl(80, 10%, 15%);
+    -1px -1px 1px hsl(80, 1%, 59%);
 }
 
 .input {
+  padding-left: 10px;
   margin-left: 10px;
   width: 75%;
   border-style: none;
 }
 .input:focus-within {
-  outline-width: 2px;
+  outline-width: 1px;
   outline-offset: 2px;
   outline-style: double;
-  outline-color: rgb(73, 124, 133);
-  box-shadow: rgb(195, 245, 245) 0px 10px 10px -5px;
+  outline-color: rgb(202, 202, 202);
+  box-shadow: rgb(209, 211, 211) 0px 10px 10px -5px;
 }
 
 .button {
@@ -52,5 +53,5 @@
 .button:hover,
 .button:focus {
   transform: scale(1.003);
-  box-shadow: rgb(195, 245, 245) 0px 10px 10px -5px;
+  box-shadow: rgb(209, 211, 211) 0px 10px 10px -5px;
 }

@@ -1,17 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import operations from 'Redux/auth/auth-operations';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import { StyledContainer, MainTitle, StyledButton } from 'components/helpers';
+import s from './Form.module.css';
 
 export default function RegisterView() {
   const dispatch = useDispatch();
@@ -41,37 +32,45 @@ export default function RegisterView() {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
+    <StyledContainer>
+      <MainTitle variant="h2">Create your account</MainTitle>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
+      <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
+        <label className={s.label}>
+          Name
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            className={s.input}
+          />
         </label>
 
-        <label style={styles.label}>
-          Почта
+        <label className={s.label}>
+          Email
           <input
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            className={s.input}
           />
         </label>
 
-        <label style={styles.label}>
-          Пароль
+        <label className={s.label}>
+          Password
           <input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
+            className={s.input}
           />
         </label>
 
-        <button type="submit">Зарегистрироваться</button>
+        <StyledButton type="submit">Create account</StyledButton>
       </form>
-    </div>
+    </StyledContainer>
   );
 }

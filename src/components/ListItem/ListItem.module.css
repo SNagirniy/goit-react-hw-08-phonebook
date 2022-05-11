@@ -29,5 +29,5 @@
 .delete_button:hover,
 .delete_button:focus {
   transform: scale(1.003);
-  box-shadow: rgb(195, 245, 245) 0px 10px 10px -5px;
+  box-shadow: rgb(209, 211, 211) 0px 10px 10px -5px;
 }
