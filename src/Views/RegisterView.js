@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import operations from 'Redux/auth/auth-operations';
 import { StyledContainer, MainTitle, StyledButton } from 'components/helpers';
+import { EmailPattern, NamePattern } from 'components/helpers';
+
 import s from './Form.module.css';
 
 export default function RegisterView() {
@@ -44,6 +46,10 @@ export default function RegisterView() {
             value={name}
             onChange={handleChange}
             className={s.input}
+            placeholder="Please input your name!"
+            aria-label="name"
+            pattern={NamePattern}
+            required
           />
         </label>
 
@@ -55,6 +61,10 @@ export default function RegisterView() {
             value={email}
             onChange={handleChange}
             className={s.input}
+            placeholder="Please input your email!"
+            aria-label="email"
+            pattern={EmailPattern}
+            required
           />
         </label>
 
@@ -66,6 +76,10 @@ export default function RegisterView() {
             value={password}
             onChange={handleChange}
             className={s.input}
+            placeholder="Please input your password!"
+            aria-label="password"
+            required
+            minLength={7}
           />
         </label>
 

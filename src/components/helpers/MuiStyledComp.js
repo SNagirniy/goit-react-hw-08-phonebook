@@ -9,6 +9,7 @@ export const StyledContainer = styled(Container)({
 
 export const MainTitle = styled(Typography)({
   marginBottom: '20px',
+  textAlign: 'center',
 });
 
 export const StyledButton = styled(Button)({

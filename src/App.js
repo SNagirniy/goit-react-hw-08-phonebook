@@ -55,7 +55,7 @@ export default function App() {
                 }
               />
             </Route>
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="*" element={<Navigate to="/contacts" />} />
           </Routes>
         </Suspense>
       )}

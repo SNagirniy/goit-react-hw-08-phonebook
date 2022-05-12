@@ -16,7 +16,7 @@ export default function HomePage() {
         >
           <img src={PhoneBookImage} width="200px" alt="tittle" />
         </Box>
-        <Typography variant="subtitle1">
+        <Typography textAlign={'center'} variant="subtitle1">
           Fast and Secure Friendly React Application
         </Typography>
         <StyledLink

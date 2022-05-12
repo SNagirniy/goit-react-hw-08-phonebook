@@ -16,7 +16,7 @@ const ListItem = ({ name, number, id }) => {
         className={s.delete_button}
         onClick={() => {
           dispatch(deleteContacts(id));
-          toast.error('Contact deleted');
+          toast.error(`${name} contact deleted`);
         }}
       >
         Delete

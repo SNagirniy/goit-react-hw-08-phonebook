@@ -40,6 +40,9 @@ export default function LoginView() {
             value={email}
             onChange={handleChange}
             className={s.input}
+            placeholder="Please input your email!"
+            aria-label="email"
+            required
           />
         </label>
 
@@ -51,6 +54,10 @@ export default function LoginView() {
             value={password}
             onChange={handleChange}
             className={s.input}
+            placeholder="Please input your password!"
+            aria-label="password"
+            minLength={7}
+            required
           />
         </label>
 

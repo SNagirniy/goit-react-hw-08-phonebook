@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ContactsSelectors, addContacts } from 'Redux/Contacts';
+import { NamePattern } from 'components/helpers';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,7 +46,7 @@ export default function ContactForm() {
     }
 
     dispatch(addContacts({ name, number }));
-    toast.success('New contact created');
+    toast.success(`${name} contact created`);
     resetForm();
   };
 
@@ -56,7 +57,7 @@ export default function ContactForm() {
         <input
           type="text"
           name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          pattern={NamePattern}
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           onChange={handleChange}
           value={name}
